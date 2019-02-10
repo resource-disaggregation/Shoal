@@ -1,0 +1,7 @@
+**/bin
+**/obj
+**/*.csv
+**/*.processed
+**/*.out
+**/de5/
+**/vsim/

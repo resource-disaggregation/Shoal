@@ -1,48 +1,69 @@
 # Shoal simulator
 
+```shell
+$ cd simulator/
+```
+
 **Format of tracefile**
 
 Each line should contain the follwing 5 fields comma-separated
 
-*flow-id, src-id, dst-id, flow-size (in bytes), flow-start-time (in seconds)*
-
 ```shell
-     $ cd shoal-simulator/
+flow-id, src-id, dst-id, flow-size (in bytes), flow-start-time (in seconds)
 ```
 
-```shell
-     $ mkdir traces
-```
-Put all the tracefiles in that directory.
+**Processing tracefile**
 
-1)  If the tracefile is in raw-format (i.e. has pkt size in bytes and time in seconds), then first run the preprocessor.
+If the tracefile is in raw-format (i.e. has pkt size in bytes and time in seconds), then first run the preprocessor.
 ```shell
-     $ python scripts/tracefile_preprocessor.py -f <raw tracefile>
+$ python scripts/tracefile_preprocessor.py -f <path/to/tracefile>
 ```
-    The processed tracefile will be stored in the traces/ directory with .processed extension
+    The processed tracefile will be stored in the same directory as the original tracefile with a .processed extension
     
-2)  Compile the code
+**Compiling the simulator code**
 ```shell
-     $ ./compile.sh
+$ ./compile.sh
 ```
 
-3) Now we are ready to run the simulator
+**Running the simulator code**
 ```shell
-     $ ./run.sh -f <processed tracefilepath> [-e <epochs> -w <0/1> -b <link bandwidth> -t <time slot> -c <cell size> -h <header size> -s <short flow size> -l <long flow size> -n <num of flows>] [-r -p -a]
-    -e: to run the exp till specified num of epochs
-    -w: 1 = static workload; 0 = dynamic workload
-    -b: link bandwidth in Gbps (float)
-    -t: length of a time slot in ns (float)
-    -c: packet(cell) size in Bytes
-    -h: cell header size in Bytes
-    -s: small flow size in KB
-    -l: long flow size in KB
-    -n: stop experiment after these many flows have finished
-    -r: to run shoal
-    -p: to plot graphs
-    -a: to do both run and plot at once
+$ ./run.sh -f <filename> [-e <epochs> -w <0/1> -b <link bandwidth> -t <time slot> -c <cell size> -h <header size> -s <short flow size> -l <long flow size> -n <num of flows> -d <percentage failed nodes> -i <interval>][-a -r -p]
+-e: to run the exp till specified num of epochs
+-w: 1 = static workload; 0 = dynamic workload
+-b: link bandwidth in Gbps (float)
+-t: length of a time slot in ns (float)
+-c: packet(cell) size in Bytes
+-h: cell header size in Bytes
+-s: small flow size in KB
+-l: long flow size in KB
+-n: stop experiment after these many flows have finished
+-d: percentage failed nodes
+-i: interval
+-r: to run shoal
+-p: to plot graphs
+-a: to do both run and plot at once
+
 ```
     All the results will be stored in the directory experiments/
+    
+**Reproducing Shoal results from NSDI'19 paper**
+We have added the workloads and scripts to reproduce results from Figures 15 and 18 from our NSDI'19 [paper](https://www.usenix.org/system/files/nsdi19-shrivastav.pdf) at the following location - [workloads.zip](https://drive.google.com/file/d/1uxMs1PzcoAMybahxCpLS-lElIH9a-3iD/view?usp=sharing). To run the experiments,
+```shell
+$ unzip workloads.zip
+```
+For Figure 15,
+```shell
+$ ./workloads/dc_workload/tracefile_preprocessor_batch.sh
+$ ./workloads/dc_workload/run_all.sh
+$ Results stored in experiments/workloads/dc_workload/
+```
+
+For Figure 18,
+```shell
+$ ./workloads/disaggregated_workload/tracefile_preprocessor_batch.sh
+$ ./workloads/disaggregated_workload/run_all.sh
+$ Results stored in experiments/workloads/disaggregated_workload/
+```
 
 # Shoal FPGA prototype
 FPGA implementation of Shoal in Bluespec
@@ -51,6 +72,10 @@ FPGA implementation of Shoal in Bluespec
 1. connectal
 2. fpgamake
 3. buildcache [optional]
+
+```shell
+$ cd prototype/
+```
 
 ## How to run
     project_dir = [circuit-switch, shoal-NIC]

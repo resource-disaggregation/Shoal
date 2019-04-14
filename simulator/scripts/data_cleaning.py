@@ -90,7 +90,7 @@ def parse_file(inp, small_size=0, big_size=1e10):
         if (len(completion_time_list[i]) > 0):
             max_completion_time[i] = completion_time_list[i][len(completion_time_list[i])-1]
 
-    for i in range(5):
+    for i in [4]:
         for j in range(25):
             if (j == 24):
                 if (completion_time_list_count[i] > 0):

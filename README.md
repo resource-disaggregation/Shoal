@@ -27,7 +27,7 @@ $ ./compile.sh
 
 **Running the simulator code**
 ```shell
-$ ./run.sh -f <filename> [-e <epochs> -w <0/1> -b <link bandwidth> -t <time slot> -c <cell size> -h <header size> -s <short flow size> -l <long flow size> -n <num of flows> -d <percentage failed nodes> -i <interval>][-a -r -p]
+$ ./run.sh -f <path/to/tracefile.processed> [-e <epochs> -w <0/1> -b <link bandwidth> -t <time slot> -c <cell size> -h <header size> -s <short flow size> -l <long flow size> -n <num of flows> -d <percentage failed nodes> -i <interval>][-a -r -p]
 -e: to run the exp till specified num of epochs
 -w: 1 = static workload; 0 = dynamic workload
 -b: link bandwidth in Gbps (float)
@@ -44,13 +44,14 @@ $ ./run.sh -f <filename> [-e <epochs> -w <0/1> -b <link bandwidth> -t <time slot
 -a: to do both run and plot at once
 
 ```
-    All the results will be stored in the directory experiments/
+    All the results will be stored inside the experiments/ directory
     
 **Reproducing Shoal results from NSDI'19 paper**
 
 We have added the workloads and scripts to reproduce results from Figures 15 and 18 from our NSDI'19 [paper](https://www.usenix.org/system/files/nsdi19-shrivastav.pdf) at the following location - [workloads.zip](https://drive.google.com/file/d/1uxMs1PzcoAMybahxCpLS-lElIH9a-3iD/view?usp=sharing). To run the experiments,
 ```shell
-$ unzip workloads.zip
+$ unzip workloads.zip inside the simulator/ directory
+$ ./compile.sh
 ```
 For Figure 15,
 ```shell

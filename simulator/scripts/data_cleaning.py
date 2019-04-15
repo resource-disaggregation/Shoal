@@ -7,12 +7,8 @@ import math
 max_completion_time = [None for i in range(5)]
 
 def parse_file(inp, small_size=0, big_size=1e10):
-    completion_time_file = []
-    goodput_file = []
-
-    for i in range(5):
-        completion_time_file.append(open('data/completion_time_'+str(i)+'.dat', 'w'))
-        goodput_file.append(open('data/goodput_'+str(i)+'.dat','w'))
+    completion_time_file = open('data/completion_time'+'.dat', 'w')
+    goodput_file = open('data/goodput'+'.dat','w')
 
     count = 0
     completion_time_list = [[] for i in range(5)]
@@ -97,12 +93,12 @@ def parse_file(inp, small_size=0, big_size=1e10):
                     avg_comp_time = completion_time_list_agg[i] / completion_time_list_count[i]
                 else:
                     avg_comp_time = -1
-                completion_time_file[i].write("avg " + str(avg_comp_time) + "\n")
+                completion_time_file.write("avg " + str(avg_comp_time) + "\n")
                 if (goodput_list_count[i] > 0):
                     avg_gput = goodput_list_agg[i] / goodput_list_count[i]
                 else:
                     avg_gput = -1
-                goodput_file[i].write("avg " + str(avg_gput) + "\n")
+                goodput_file.write("avg " + str(avg_gput) + "\n")
                 continue
             if (j == 21):
                 x = 0.99 * (len(completion_time_list[i])-1)
@@ -127,20 +123,20 @@ def parse_file(inp, small_size=0, big_size=1e10):
                 g = -1
 
             if (j == 21):
-                completion_time_file[i].write("99" + " " + str(c) + "\n")
-                goodput_file[i].write("99" + " " + str(g) + "\n")
+                completion_time_file.write("99" + " " + str(c) + "\n")
+                goodput_file.write("99" + " " + str(g) + "\n")
             elif (j == 22):
-                completion_time_file[i].write("99.9" + " " + str(c) + "\n")
-                goodput_file[i].write("99.9" + " " + str(g) + "\n")
+                completion_time_file.write("99.9" + " " + str(c) + "\n")
+                goodput_file.write("99.9" + " " + str(g) + "\n")
             elif (j == 23):
-                completion_time_file[i].write("99.99" + " " + str(c) + "\n")
-                goodput_file[i].write("99.99" + " " + str(g) + "\n")
+                completion_time_file.write("99.99" + " " + str(c) + "\n")
+                goodput_file.write("99.99" + " " + str(g) + "\n")
             else:
-                completion_time_file[i].write(str(j*5) + " " + str(c) + "\n")
-                goodput_file[i].write(str(j*5) + " " + str(g) + "\n")
+                completion_time_file.write(str(j*5) + " " + str(c) + "\n")
+                goodput_file.write(str(j*5) + " " + str(g) + "\n")
 
-        completion_time_file[i].close()
-        goodput_file[i].close()
+        completion_time_file.close()
+        goodput_file.close()
 
 def create_directory(directory):
     if (not os.path.isdir(directory)):

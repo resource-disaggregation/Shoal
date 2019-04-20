@@ -67,6 +67,8 @@ $ ./workloads/disaggregated_workload/run_all.sh
 $ Results stored in experiments/workloads/disaggregated_workload/
 ```
 
+For baseline results - DCTCP, NDP and DCQCN - we used the simulator used in the [NDP paper](http://delivery.acm.org/10.1145/3100000/3098825/p29-Handley.pdf?ip=74.79.255.27&id=3098825&acc=OPENTOC&key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E9F04A3A78F7D3B8D&__acm__=1555755558_15ff07b1c6557fe5e10e5e89f67e60c4) from SIGCOMM'17, and the code is available [here](https://github.com/nets-cs-pub-ro/NDP). We used the same workloads as above for each of the baselines.
+
 # Shoal FPGA prototype
 FPGA implementation of Shoal in Bluespec
 

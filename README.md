@@ -1,5 +1,5 @@
 # Shoal
-Shoal is a new network stack and a network fabric for disaggregated racks within datacenters, that can achieve very high performance while consuming a very modest fraction of rack's power budget, thus enabling dense high performance rack-scale disaggregated clusters within datacenters. The key insight used in Shoal's design is to use fast circuit switches (that could reconfigure within nanoseconds) to build the rack's network. For more details, refer to our [NDSI'19 paper](https://www.usenix.org/system/files/nsdi19-shrivastav.pdf).
+Shoal is a new network stack and a network fabric for disaggregated racks within datacenters that can achieve very high performance while consuming a very modest fraction of rack's power budget, thus enabling dense high performance rack-scale disaggregated clusters within datacenters. The key insight used in Shoal's design is to use fast circuit switches (that could reconfigure within nanoseconds) to build the rack's network. For more details, please refer to our [NDSI'19 paper](https://www.usenix.org/system/files/nsdi19-shrivastav.pdf).
 
 # Shoal simulator
 

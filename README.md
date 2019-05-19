@@ -1,3 +1,6 @@
+# Shoal
+Shoal is a new network stack and a network fabric for disaggregated racks within datacenters, that can achieve very high performance while consuming a very modest fraction of rack's power budget, thus enabling dense high performance rack-scale disaggregated clusters within datacenters. The key insight used in Shoal's design is to use fast circuit switches (that could reconfigure within nanoseconds) to build the rack's network. For more details, refer to our [NDSI'19 paper](https://www.usenix.org/system/files/nsdi19-shrivastav.pdf).
+
 # Shoal simulator
 
 ```shell
@@ -48,7 +51,7 @@ $ ./run.sh -f <path/to/tracefile.processed> [-e <epochs> -w <0/1> -b <link bandw
     
 **Reproducing Shoal results from NSDI'19 paper**
 
-We have added the workloads and scripts to reproduce results from Figures 15 and 18 from our NSDI'19 [paper](https://www.usenix.org/system/files/nsdi19-shrivastav.pdf) at the following location - [workloads.zip](https://drive.google.com/file/d/1uxMs1PzcoAMybahxCpLS-lElIH9a-3iD/view?usp=sharing). To run the experiments,
+We have added the workloads and scripts to reproduce results from Figures 15 and 18 from our [NSDI'19 paper](https://www.usenix.org/system/files/nsdi19-shrivastav.pdf) at the following location - [workloads.zip](https://drive.google.com/file/d/1uxMs1PzcoAMybahxCpLS-lElIH9a-3iD/view?usp=sharing). To run the experiments,
 ```shell
 $ unzip workloads.zip inside the simulator/ directory
 $ ./compile.sh
